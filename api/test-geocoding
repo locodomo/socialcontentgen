@@ -1,0 +1,30 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Geocoding Test</title>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDmP7k7bk-LKsENAdocNE8nxHMUaxfdyg&libraries=places"></script>
+          <script>
+            function initMap() {
+              const geocoder = new google.maps.Geocoder();
+              const latlng = { lat: 40.758, lng: -73.9855 };
+              
+              geocoder.geocode({ location: latlng }, (results, status) => {
+                if (status === 'OK') {
+                  if (results[0]) {
+                    document.getElementById('result').textContent = 
+                      JSON.stringify(results[0].formatted_address);
+                  }
+                } else {
+                  document.getElementById('result').textContent = 
+                    'Geocoding failed: ' + status;
+                }
+              });
+            }
+          </script>
+        </head>
+        <body onload="initMap()">
+          <div id="result">Loading...</div>
+        </body>
+      </html>
+    

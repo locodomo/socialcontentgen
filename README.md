@@ -20,6 +20,7 @@ Generate AI-powered social media captions effortlessly! Add a location or keywor
 
 - Node.js 18+ and npm
 - OpenAI API key (for AI-powered content generation)
+- Optional: Google Maps API key (for enhanced location features)
 
 ### Installation
 
@@ -34,10 +35,24 @@ cd socialcontentgen
 npm install
 ```
 
-3. Create a `.env.local` file in the root directory and add your API key:
-```env
-OPENAI_API_KEY=your_openai_api_key_here
-```
+3. Set up environment variables:
+   - Copy the example environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
+   - Open `.env.local` and fill in your API keys and configuration:
+   ```env
+   # Required
+   OPENAI_API_KEY=your_openai_api_key_here
+   
+   # Application Settings (adjust as needed)
+   NEXT_PUBLIC_MAX_DAILY_GENERATIONS=10
+   NEXT_PUBLIC_MAX_TOTAL_GENERATIONS=100
+   
+   # Optional
+   GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+   NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id_here
+   ```
 
 4. Start the development server:
 ```bash
@@ -58,6 +73,17 @@ npm run dev
 6. Use the sharing buttons to post directly to social media
 7. Or use the copy buttons to copy content to clipboard
 
+## Environment Variables
+
+### Required Variables
+- `OPENAI_API_KEY`: Your OpenAI API key for content generation
+
+### Optional Variables
+- `GOOGLE_MAPS_API_KEY`: Google Maps API key for enhanced location features
+- `NEXT_PUBLIC_MAX_DAILY_GENERATIONS`: Maximum number of generations allowed per day (default: 10)
+- `NEXT_PUBLIC_MAX_TOTAL_GENERATIONS`: Maximum total generations allowed (default: 100)
+- `NEXT_PUBLIC_ANALYTICS_ID`: Analytics tracking ID
+
 ## Tech Stack
 
 - Frontend: Next.js 14, React, TypeScript
@@ -65,6 +91,13 @@ npm run dev
 - AI: OpenAI GPT-4 for content generation
 - State Management: React Hooks
 - Deployment: Vercel
+
+## Security Notes
+
+- Never commit your `.env`, `.env.local`, or any other files containing API keys
+- Keep your API keys secure and rotate them regularly
+- Use environment variables for all sensitive configuration
+- The `.gitignore` file is configured to prevent accidental commits of sensitive data
 
 ## Contributing
 
